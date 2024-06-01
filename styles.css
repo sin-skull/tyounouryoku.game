@@ -204,10 +204,11 @@ button:hover {
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
 #game-info {
     padding: 20px;
-    border: 2px solid #007bff; /* ボーダーの色と幅を指定 */
-    background-color: #f0f8ff; /* 背景色を薄い色にしてコントラストを高める */
-    border-radius: 10px; /* ボックスの角を丸くする */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ボックスに影を追加 */
+    border: 2px solid #007bff;
+    background-color: #f0f8ff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
