@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超能力ゲーム</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1 id="game-title" onclick="incrementTitleClick()">超能力ゲーム</h1>
+    <div id="home-screen" class="screen">
+        <p>ホーム画面</p>
+        <button onclick="startQuest()">クエスト</button>
+        <button onclick="viewItems()">アイテム</button>
+        <button onclick="viewTitles()">称号</button>
+        <div id="game-info">
+            <h2>ご挨拶</h2>
+            <p>こんにちは！超能力ゲームに興味を持っていただき、ありがとうございます。このゲームは、皆さんが楽しんでプレイできるように、たくさんの工夫とチャレンジを盛り込みました。ここでは、ゲームの概要とプレイ方法、そして楽しみ方についてご紹介します。</p>
+            
+            <h2>ゲームの概要</h2>
+            <p>このゲームは、プレイヤーがさまざまな超能力を駆使して敵と戦うアクションゲームです。各ステージでは、異なる難易度と敵が待ち受けています。特定のステージをクリアすることで、新しい超能力を手に入れることができます。ゲーム内での目標は、すべてのステージをクリアし、最高の称号を獲得することです。</p>
+            
+            <h2>プレイ方法</h2>
+            <h3>ホーム画面から開始</h3>
+            <p>ゲームを開始すると、まずホーム画面に移動します。ここでは、アイテム欄を確認したり、称号をチェックしたり、クエスト（ステージ）を選択することができます。</p>
+            
+            <h3>ステージ選択</h3>
+            <p>クエストボタンを押して、挑戦するステージを選びます。各ステージは異なる難易度が設定されており、クリアするごとに次のステージがアンロックされます。</p>
+            
+            <h3>戦闘</h3>
+            <p>戦闘では、選んだ超能力を使って敵と戦います。各超能力には4つの技があり、それぞれの技には使用回数制限があります。ターンごとに技を選び、敵を倒してステージをクリアしましょう。</p>
+            
+            <h3>アイテムの使用</h3>
+            <p>ステージクリア後に獲得したアイテムを使って、技のレベルを上げることができます。アイテムはホーム画面のアイテム欄から確認し、技にドラッグアンドドロップして使用します。</p>
+            
+            <h2>楽しみ方</h2>
+            <h3>称号集め</h3>
+            <p>ゲーム内には多くの称号が用意されており、特定の条件を満たすことで獲得できます。全ての称号を集めることに挑戦してみてください。</p>
+            
+            <h3>技レベル上げ</h3>
+            <p>各技にはレベルがあり、アイテムを使ってレベルアップすることができます。全ての技を最大レベルにすることを目標にプレイしてみましょう。</p>
+            
+            <h3>裏技</h3>
+            <p>ゲームには隠された裏技も存在します。ちょっとした工夫や探索で、通常のプレイでは見つからない秘密を発見してみてください。</p>
+            
+            <p>このゲームは、皆さんに楽しんでもらうために作られたものです。さまざまな遊び方で、ぜひ長く楽しんでください！</p>
+        </div>
+    </div>
+    <div id="item-screen" class="screen hidden">
+        <button class="back-button" onclick="goBack()">＜</button>
+        <button class="home-button" onclick="goHome()">𖠿</button>
+        <p>獲得している技一覧:</p>
+        <div id="techniques-list" class="techniques-list"></div>
+        <p>アイテム欄:</p>
+        <div id="items"></div>
+    </div>
+    <div id="title-screen" class="screen hidden">
+        <button class="back-button" onclick="goBack()">＜</button>
+        <button class="home-button" onclick="goHome()">𖠿</button>
+        <p>獲得した称号:</p>
+        <div id="titles" class="scrollable"></div>
+    </div>
+    <div id="stage-screen" class="screen hidden">
+        <button class="back-button" onclick="goBack()">＜</button>
+        <button class="home-button" onclick="goHome()">𖠿</button>
+        <p>ステージを選んでください:</p>
+        <div class="stage-buttons">
+            <button onclick="chooseStage(1)">ステージ 1</button>
+            <button onclick="chooseStage(2)">ステージ 2</button>
+            <button onclick="chooseStage(3)">ステージ 3</button>
+            <button onclick="chooseStage(4)">ステージ 4</button>
+            <button onclick="chooseStage(5)">ステージ 5</button>
+            <button onclick="chooseStage(6)">ステージ 6</button>
+            <button onclick="chooseStage(7)">ステージ 7</button>
+            <button onclick="chooseStage(8)">ステージ 8</button>
+            <button onclick="chooseStage(9)">ステージ 9</button>
+            <button onclick="chooseStage(10)">ステージ 10</button>
+        </div>
+    </div>
+    <div id="game-screen" class="screen hidden">
+        <button class="back-button" onclick="goBack()">＜</button>
+        <button class="home-button" onclick="goHome()">𖠿</button>
+        <div class="status-bars" id="enemy-bars">
+            <div><p>敵の体力:</p></div>
+        </div>
+        <div class="status-bars">
+            <div>
+                <p>あなたの体力:</p>
+                <div class="health-bar">
+                    <div id="player-health" class="health">100%</div>
+                </div>
+            </div>
+        </div>
+        <button onclick="changePower()">超能力を変更</button>
+        <p id="player-power"></p>
+        <div id="techniques">
+            <p>技を選んでください:</p>
+            <button id="technique-1" onclick="attack(techniques[0])"></button>
+            <button id="technique-2" onclick="attack(techniques[1])"></button>
+            <button id="technique-3" onclick="attackAll(techniques[2])"></button>
+            <button id="technique-4" onclick="attack(techniques[3])"></button>
+        </div>
+    </div>
+    <div id="reset-button" onclick="resetLocalStorage()" class="hidden"></div>
+    <div id="notification" class="notification hidden"></div>
+    <div id="popup" class="popup hidden">
+        <div id="popup-content"></div>
+        <button onclick="closePopup()">閉じる</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
